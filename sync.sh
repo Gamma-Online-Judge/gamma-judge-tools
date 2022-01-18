@@ -1,0 +1,1 @@
+aws s3 sync s3://gama-judge-submissions/ s3-bucket/
