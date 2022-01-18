@@ -36,4 +36,4 @@ RUN pip3 install awscli
 
 COPY . .
 
-CMD ["sh", "run.sh"]
+ENTRYPOINT ["sh", "entrypoint.sh"]
