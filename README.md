@@ -20,7 +20,7 @@ Também é possível rodar a aplicação utilizando o docker sem a necessidade d
 Primeiro basta realizar o build da imagem apontando o container para alguma tag 
 
 ```bash
-docker build . -t gamma-judge-bash
+docker build . -t gamma-judge-tools
 ```
 
 Logo após para executar o projeto basta executar o container utilizando as variáveis de amiente *AWS_ACCESS_KEY_ID* e *AWS_SECRET_ACCESS_KEY*
@@ -29,7 +29,7 @@ Logo após para executar o projeto basta executar o container utilizando as vari
 docker run \
     -e AWS_ACCESS_KEY_ID=*** \
     -e AWS_SECRET_ACCESS_KEY=*** \
-    gamma-judge-bash
+    gamma-judge-tools
 ```
 
 Também é possível executar utilizando a configuração do arquiv *.env* executando o comando 
@@ -37,5 +37,5 @@ Também é possível executar utilizando a configuração do arquiv *.env* execu
 ```bash
 docker run \
     --env-file .env \
-    gamma-judge-bash
+    gamma-judge-tools
 ```
