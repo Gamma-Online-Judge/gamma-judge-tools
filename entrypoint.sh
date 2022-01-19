@@ -1,4 +1,5 @@
 #!/bin/bash
+bash mojtools/check-deps.sh
 
-sh sync.sh 
-sh judge.sh OlaMundo.py3 py3 hello_world
+sh sync.sh
+sh judge.sh OlaMundo.c c hello_world

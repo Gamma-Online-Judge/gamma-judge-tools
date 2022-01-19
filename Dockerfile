@@ -34,6 +34,18 @@ RUN apt-get install -y \
 
 RUN pip3 install awscli
 
+
+# MojTools deps 
+
+RUN apt-get install -y \
+    time \
+    bubblewrap \
+    bc \
+    cpuset \
+    fpc \
+    spim \
+    ocaml-nox
+
 COPY . .
 
 ENTRYPOINT ["sh", "entrypoint.sh"]
