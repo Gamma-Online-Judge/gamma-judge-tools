@@ -7,4 +7,7 @@ if [ -z "$fileKey" ] || [ -z "$language" ] || [ -z "$templateKey" ]; then
     exit 1
 fi
 
-./mojtools/build-and-test.sh $language s3-bucket/submission_files/$fileKey s3-bucket/templates/$templateKey yes
+result=$(./mojtools/build-and-test.sh $language s3-bucket/submission_files/$fileKey s3-bucket/templates/$templateKey yes)
+result_code=$?
+echo $result
+exit $result_code
