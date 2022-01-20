@@ -10,7 +10,8 @@ apt-get install -y \
     ssh \
     python \
     python3-pip \
-    jq
+    jq \
+    jo
 
 pip3 install awscli
 
