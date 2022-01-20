@@ -13,29 +13,8 @@ export AWS_ACCESS_KEY_ID=***
 export AWS_SECRET_ACCESS_KEY=***
 ```
 
-### Utilizando docker
+É necessário instalar as dependencias rodando o arquivo do respectivo sistema operacional localizado na pasta **setup**
 
-Também é possível rodar a aplicação utilizando o docker sem a necessidade de instalar o cli na máquina.
+### Rodando o programa
 
-Primeiro basta realizar o build da imagem apontando o container para alguma tag 
-
-```bash
-docker build . -t gamma-judge-tools
-```
-
-Logo após para executar o projeto basta executar o container utilizando as variáveis de amiente *AWS_ACCESS_KEY_ID* e *AWS_SECRET_ACCESS_KEY*
-
-```bash
-docker run \
-    -e AWS_ACCESS_KEY_ID=*** \
-    -e AWS_SECRET_ACCESS_KEY=*** \
-    gamma-judge-tools
-```
-
-Também é possível executar utilizando a configuração do arquiv *.env* executando o comando 
-
-```bash
-docker run \
-    --env-file .env \
-    gamma-judge-tools
-```
+Para rodar basta executar o script entrypoint
