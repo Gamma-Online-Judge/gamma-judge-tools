@@ -19,9 +19,11 @@ result_code=$?
 echo $result
 if [ $result_code -eq 0 ]; then
     notification_message=$(jo -p Id=$id Result="$result")
-    aws sns publish --topic-arn "$TOPIC_ARN" --message "$notification_message"
-    aws sqs delete-message --queue-url $QUEUE_URL --receipt-handle $(echo $raw_message | jq -r '.ReceiptHandle')
+    aws sns publish --topic-arn "$TOPIC_ARN" --message "$notification_message" > /dev/null
+    aws sqs delete-message --queue-url $QUEUE_URL --receipt-handle $(echo $raw_message | jq -r '.ReceiptHandle') > /dev/null
     exit 0
 else
+    echo $result
+    echo "Result code is $result_code"
     exit 1
 fi
