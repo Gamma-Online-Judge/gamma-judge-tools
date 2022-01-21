@@ -13,7 +13,7 @@ id=$(echo $message | jq -r '.Id')
 file_key=$(echo $message | jq -r '.FileKey')
 problem_id=$(echo $message | jq -r '.ProblemId')
 language=$(echo $message | jq -r '.Language')
-
+./sync.sh > /dev/null
 result=$(./judge.sh $file_key $language $problem_id)
 result_code=$?
 echo $result

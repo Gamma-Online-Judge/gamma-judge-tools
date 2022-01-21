@@ -1,9 +1,7 @@
 #!/bin/bash
 while :
 do
-	tput sgr0
-    echo "Syncronizing with S3"
-    ./sync.sh
+	tput sgr0    
     echo "Processing message"
     result=$(./process_message.sh)
     result_code=$?
