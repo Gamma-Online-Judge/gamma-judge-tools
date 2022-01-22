@@ -16,10 +16,9 @@ language=$(echo $message | jq -r '.Language')
 ./send_sns_notification.sh $id "Running" > /dev/null
 
 ## Sync s3 file
-./sync.sh > /dev/null
 file_path=s3-bucket/submission_files/$file_key
 if [ ! -f "$file_path" ]; then
-    aws s3 cp s3://gama-judge-submissions/submission_files/$file_key $file_path
+    aws s3 cp s3://gama-judge-submissions/submission_files/$file_key $file_path > /dev/null
 fi
 
 result=$(./judge.sh $file_key $language $problem_id)
