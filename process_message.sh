@@ -26,7 +26,7 @@ result_code=$?
 echo $result
 if [ $result_code -eq 0 ]; then
     rm $file_path
-    ./send_sns_notification.sh $id $result > /dev/null
+    ./send_sns_notification.sh $id "$result" > /dev/null
     aws sqs delete-message --queue-url $QUEUE_URL --receipt-handle $(echo $raw_message | jq -r '.ReceiptHandle') > /dev/null
     exit 0
 else
