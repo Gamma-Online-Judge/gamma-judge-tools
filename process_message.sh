@@ -1,6 +1,6 @@
-QUEUE_URL="https://sqs.sa-east-1.amazonaws.com/818598312538/SubmissionsQueue"
+QUEUE_URL="https://sqs.sa-east-1.amazonaws.com/459427504023/SubmissionsQueue"
 MAX_MESSAGES=1
-
+BUCKET_NAME="goj-submissions"
 response=$(aws sqs receive-message --queue-url $QUEUE_URL --max-number-of-messages $MAX_MESSAGES)
 raw_message=$(echo $response | jq -r '.Messages[0]')
 if [ -z "$raw_message" ]; then
@@ -17,8 +17,12 @@ language=$(echo $message | jq -r '.Language')
 
 ## Sync s3 file
 file_path=s3-bucket/submission_files/$file_key
-if [ ! -f "$file_path" ]; then
-    aws s3 cp s3://gama-judge-submissions/submission_files/$file_key $file_path > /dev/null
+if [ ! -f "$file_path" ] ; then
+    aws s3 cp s3://$BUCKET_NAME/submission_files/$file_key $file_path > /dev/null
+fi
+template_file_path=s3-bucket/templates/$problem_id
+if [ ! -f "$template_file_path" ]; then
+    aws s3 cp --recursive s3://$BUCKET_NAME/templates/$problem_id $template_file_path > /dev/null
 fi
 
 result=$(./judge.sh $file_key $language $problem_id)

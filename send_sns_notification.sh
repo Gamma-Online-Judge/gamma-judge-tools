@@ -1,4 +1,4 @@
-TOPIC_ARN="arn:aws:sns:sa-east-1:818598312538:SubmissionResult"
+TOPIC_ARN="arn:aws:sns:sa-east-1:459427504023:SubmissionResult"
 submission_id=$1
 status=$2
 if [ -z "$submission_id" ] || [ -z "$status" ]; then
